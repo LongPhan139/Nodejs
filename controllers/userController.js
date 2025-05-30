@@ -1,20 +1,35 @@
-const users = require('../models/userModel');
+const users = []; // Dùng mảng tạm thời thay vì DB
 
-exports.getAllUsers = (req, res) => {
-    res.render("home", { data: users.getAll() });
+exports.getLogin = (req, res) => {
+    res.render("login", { error: null });
 };
 
-exports.addUser = (req, res) => {
-    users.add(req.body);
-    res.redirect('/');
+exports.postLogin = (req, res) => {
+    const { username, password } = req.body;
+    const user = users.find(u => u.username === username && u.password === password);
+    if (user) {
+        req.session.user = user;
+        res.redirect("/");
+    } else {
+        res.render("login", { error: "Sai tên đăng nhập hoặc mật khẩu" });
+    }
 };
 
-exports.deleteUser = (req, res) => {
-    users.remove(req.body.userUniqueId);
-    res.redirect('/');
+exports.getRegister = (req, res) => {
+    res.render("register", { error: null });
 };
 
-exports.updateUser = (req, res) => {
-    users.update(req.body);
-    res.redirect('/');
+exports.postRegister = (req, res) => {
+    const { username, password } = req.body;
+    if (users.find(u => u.username === username)) {
+        res.render("register", { error: "Tên người dùng đã tồn tại" });
+    } else {
+        users.push({ username, password });
+        res.redirect("/users/login");
+    }
+};
+
+exports.logout = (req, res) => {
+    req.session.destroy();
+    res.redirect("/");
 };
