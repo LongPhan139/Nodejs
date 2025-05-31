@@ -21,8 +21,6 @@ app.set("views", path.join(__dirname, "views"));
 
 app.use("/users", userRoutes);
 
-
-// Mảng sản phẩm giống trong file EJS
 const products = [
     {
         image: "sp1.webp",
