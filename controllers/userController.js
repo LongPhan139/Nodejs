@@ -1,4 +1,4 @@
-const users = []; // Dùng mảng tạm thời thay vì DB
+const users = [];
 
 exports.getLogin = (req, res) => {
     res.render("login", { error: null });
