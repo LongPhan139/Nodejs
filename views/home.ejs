@@ -52,64 +52,214 @@
 
     <div class="container mt-4 mb-5">
         <div class="row g-4">
-            <% const products=[ { image: "sp1.webp" , title: "Giày chạy bộ Nike" ,
-                description: "Thiết kế hiện đại, thoáng khí, phù hợp thể thao." ,price: "1.200.000₫" }, {
-                image: "sp2.webp" , title: "Áo Ba Lỗ Nam Under Armour Curry Sleeveless" ,
-                description: "Giúp bạn thể hiện sự ủng hộ đối với Stephen Curry trong sứ mệnh thay đổi trò chơi. Với chất liệu vải cotton pha siêu mềm mại, áo giúp bạn luôn thoải mái, nhanh khô và linh hoạt trong mọi chuyển động."
-                , price: "2.500.000₫" }, { image: "sp3.webp" , title: "Quần Ngắn Nam Under Armour Meridian Woven" ,
-                description: "Mang đến sự thoải mái tối đa với chất liệu siêu nhẹ, co giãn linh hoạt và thoáng khí. Lớp lót nén mềm mại giúp tăng cường độ hỗ trợ, trong khi cạp chun co giãn cùng dây rút bên ngoài mang lại độ vừa vặn hoàn hảo."
-                , price: "1.850.000₫" }, { image: "sp4.webp" , title: "Túi Thể Thao Nike Premium - Xanh Dương" ,
-                description: " Được làm từ chất liệu bền bỉ, một dây đeo chéo có thể tháo rời và nắp mở giống hộp giày, sản phẩm phù hợp dùng trong những buổi đi đến phòng tập hoặc thể thao ngoài trời. Bên trong có một túi co giãn và một túi lưới có khóa kéo giúp lưu trữ giày cùng các vật dụng khác."
-                , price:"895.000₫"}, { image: "sp5.webp" ,
-                title: "Quần Dài Thể Thao Nam Under Armour Unstoppable Vented Taper" ,
-                description: "được thiết kế từ chất liệu vải co giãn, bền bỉ và cực kỳ thoáng khí, mang lại sự thoải mái và linh hoạt tối đa cho bạn trong mọi hoạt động thể thao. Với thiết kế tinh tế và hiệu suất vượt trội, đây là lựa chọn lý tưởng cho những ai đam mê vận động."
-                ,price:"2.999.000₫" }, { image: "sp6.webp" , title: "Đồ Bơi Một Mảnh Nữ Speedo Hero 5.0 - Xanh Navy" ,
-                description: "Mang đến cảm giác nhẹ nhàng và nữ tính tinh tế với mẫu vải xoắn cao cấp, có độ co giãn cao và họa tiết vân xoắn độc đáo. "
-                , price: "1.650.000₫" } ]; %>
-
-                <% products.forEach(product=> { %>
-                    <div class="col-md-4">
-                        <div class="card product-card mb-4 h-100 d-flex flex-column mt-2">
-                            <img src="/img/<%= product.image %>" class="card-img-top" alt="<%= product.title %>">
-                            <div class="card-body">
-                                <h5 class="card-title">
-                                    <%= product.title %>
-                                </h5>
-                                <p class="card-text">
-                                    <%= product.description %>
-                                </p>
-                                <p class="text-danger fw-bold">
-                                    Giá: <%= product.price %>
-                                </p>
-                                <a href="#" class="btn btn-primary">Mua ngay</a>
-                            </div>
+            <% products.forEach(product=> { %>
+                <div class="col-md-4">
+                    <div class="card product-card mb-4 h-100 d-flex flex-column mt-2">
+                        <img src="/img/<%= product.image %>" class="card-img-top" alt="<%= product.name %>">
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <%= product.name %>
+                            </h5>
+                            <p class="card-text">
+                                <%= product.description %>
+                            </p>
+                            <p class="text-danger fw-bold">
+                                Giá: <%= product.price.toLocaleString('vi-VN') %>
+                            </p>
+                            <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#buyConfirmModal"
+                                data-title="<%= product.name %>">Mua ngay</a>
                         </div>
                     </div>
-                    <% }) %>
+                </div>
+                <% }) %>
         </div>
     </div>
-
-
-
+    <div class="container mb-5">
+        <h2 class="mb-4">Sản phẩm<span style="color: rgb(199, 54, 54);"> NỔI BẬT</span> </h2>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card product-card">
+                    <img src="https://assets.adidas.com/images/h_2000,f_auto,q_auto,fl_lossy,c_fill,g_auto/cb9b5acfbf464dfca194048e0d3c9cee_9366/Giay_DJa_Bong_Firm_Ground_F50_Eli...M5.jpg"
+                        class="card-img-top" alt="Bóng đá" />
+                    <div class="card-body">
+                        <h5 class="card-title">Giày Firm Ground F50 Elite</h5>
+                        <p class="card-text">Giá: 5.800.000 VNĐ</p>
+                        <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#buyConfirmModal"
+                            data-title="Giày Firm Ground F50 Elite">Mua ngay</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card product-card">
+                    <img src="https://assets.adidas.com/images/w_766,h_766,f_auto,q_auto,fl_lossy,c_fill,g_auto/114b48d0e599475c83d275dcf637fb9e_9366/giay-ultraboost-5.jpg"
+                        class="card-img-top" alt="Bóng đá" />
+                    <div class="card-body">
+                        <h5 class="card-title">Giày Ultraboost 5</h5>
+                        <p class="card-text">Giá: 4.900.000 VNĐ</p>
+                        <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#buyConfirmModal"
+                            data-title="Giày Ultraboost 5">Mua ngay</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card product-card">
+                    <img src="https://assets.adidas.com/images/w_766,h_766,f_auto,q_auto,fl_lossy,c_fill,g_auto/2321083f918b431b9849ec5e3b7372d1_9366/giay-rapidmove-adv-2.jpg"
+                        class="card-img-top" alt="Bóng đá" />
+                    <div class="card-body">
+                        <h5 class="card-title">Giày Rapidmove ADV 2</h5>
+                        <p class="card-text">Giá: 3.200.000 VNĐ</p>
+                        <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#buyConfirmModal"
+                            data-title="Giày Rapidmove ADV 2">Mua ngay</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card product-card">
+                    <img src="https://assets.adidas.com/images/h_2000,f_auto,q_auto,fl_lossy,c_fill,g_auto/f50cc49cd92c4c68b586f5338d89358f_9366/Tui_Bong_DJa_adidas_Originals_x_L...rd.jpg"
+                        class="card-img-top" alt="Bóng đá" />
+                    <div class="card-body">
+                        <h5 class="card-title">Túi Originals x Liberty London</h5>
+                        <p class="card-text">Giá: 1.500.000 VNĐ</p>
+                        <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#buyConfirmModal"
+                            data-title="Túi Originals x Liberty London">Mua ngay</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card product-card">
+                    <img src="https://assets.adidas.com/images/w_766,h_766,f_auto,q_auto,fl_lossy,c_fill,g_auto/dc17438a8f8e4f6f96da8a382a49c491_9366/tui-duffel-yoga.jpg"
+                        class="card-img-top" alt="Bóng đá" />
+                    <div class="card-body">
+                        <h5 class="card-title">Túi Duffel Yoga</h5>
+                        <p class="card-text">Giá: 1.200.000 VNĐ</p>
+                        <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#buyConfirmModal"
+                            data-title="Túi Duffel Yoga">Mua ngay</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card product-card">
+                    <img src="https://assets.adidas.com/images/h_840,f_auto,q_auto,fl_lossy,c_fill,g_auto/3f0d5db551e5440185daaafc3fb69b62_9366/Womens_Euro25_LGE_Ball_White_JH126...rd.jpg"
+                        class="card-img-top" alt="Bóng đá" />
+                    <div class="card-body">
+                        <h5 class="card-title">Women's Euro25 LGE Ball</h5>
+                        <p class="card-text">Giá: 950.000 VNĐ</p>
+                        <a href="#" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#buyConfirmModal"
+                            data-title="Women's Euro25 LGE Ball">Mua ngay</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid adicolor-section position-relative" style="background-color: #1d1d2c; color: white;">
+        <div class="container">
+            <h2 class="text-white mb-4">Sport<span style="color: rgb(209, 150, 150);">Shop</span></h2>
+            <div class="row">
+                <!-- Cột trái có text -->
+                <div class="col-md-4 position-relative">
+                    <img src="https://cdn.giaoducthoidai.vn/images/fa1757257a6408a06987b1ea1573efb9df4686b4ac4ff4a8889db81ca9100b3f955023ac562bd607541dc80645803745/ronaldo-1.jpg.webp"
+                        alt="img1" class="adicolor-img" style="margin-top: 100px; height: 500px;">
+                    <div class="text-overlay">
+                        <h4>Sport Store</h4>
+                        <p>Biểu tượng không thể phủ nhận. Và chính bạn làm nên điều đó.</p>
+                        <a href="#" class="btn btn-dark mt-2">Xem Thêm &rarr;</a>
+                    </div>
+                </div>
+                <!-- Cột giữa -->
+                <div class="col-md-4">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/d/d7/Cristiano_Ronaldo_playing_for_Al_Nassr_FC_against_Persepolis%2C_September_2023_%28cropped%29.jpg"
+                        alt="img2" class="adicolor-img" style="height: 500px;">
+                </div>
+                <!-- Cột phải -->
+                <div class="col-md-4 position-relative">
+                    <img src="https://media.baovanhoa.vn/zoom/1000/uploaded/ngoctrung/2025_05_30/ronaldo_HRCZ.png"
+                        alt="img3" class="adicolor-img" style="margin-top: 100px; height: 500px;">
+                    <img src="http://upload.wikimedia.org/wikipedia/commons/2/20/Adidas_Logo.svg"
+                        class="logo-bottom-right  alt=" logo>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid banner">
+        <div class="d-flex flex-column flex-md-row justify-content-between align-items-center">
+            <div class="banner-text text-center text-md-start mb-3 mb-md-0">
+                TRỞ THÀNH HỘI VIÊN & HƯỞNG ƯU ĐÃI 15%
+            </div>
+            <a href="#" class="banner-btn text-decoration-none">Đăng ký miễn phí</a>
+        </div>
+    </div>
+    </div>
     <footer class="bg-dark text-light p-4">
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
                     <h5>Thông tin</h5>
-                    <p>(bạn tự ghi nội dung)</p>
+                    <p>Sport Store</p>
+                    <p>Chúng tôi là đơn vị chuyên cung cấp các sản phẩm và dịch vụ chất lượng, luôn đặt uy tín và sự hài
+                        lòng của khách hàng lên hàng đầu.</p>
+                    <p>Với đội ngũ nhân viên nhiệt tình và chuyên nghiệp, chúng tôi cam kết mang đến trải nghiệm tốt
+                        nhất cho bạn.</p>
                 </div>
                 <div class="col-md-4">
                     <h5>Liên hệ</h5>
-                    <p>(bạn tự ghi nội dung)</p>
+                    <p>Địa chỉ: Truờng đại học Nha Trang, thành phố Nha Trang, tỉnh Khánh Hòa</p>
+                    <p>Điện thoại: 0123 456 789</p>
+                    <p>Email: Group3@gmail.com</p>
+                    <p>Giờ làm việc: Thứ 2 - Thứ 7 (8:00 - 17:00)</p>
                 </div>
                 <div class="col-md-4">
                     <h5>Fanpage</h5>
-                    <p>(bạn tự ghi nội dung)</p>
+                    <p>Hãy theo dõi chúng tôi để cập nhật những tin tức mới nhất, chương trình khuyến mãi hấp dẫn và
+                        nhiều thông tin bổ ích khác!</p>
+                    <p>👉 Fanpage: facebook.com/tenfanpage</p>
+                </div>
+            </div>
+        </div>
+        <!-- Modal xác nhận mua hàng -->
+        <div class="modal fade" id="buyConfirmModal" tabindex="-1" aria-labelledby="buyConfirmModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="buyConfirmModalLabel">Xác nhận mua hàng</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Đóng"></button>
+                    </div>
+                    <div class="modal-body">
+                        Bạn có chắc chắn muốn mua sản phẩm này không?
+                        <h6 class="mt-3 text-primary" id="modalProductName"></h6>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Hủy</button>
+                        <button type="button" class="btn btn-primary" id="confirmBuyBtn">Xác nhận</button>
+                    </div>
                 </div>
             </div>
         </div>
     </footer>
+    <footer class="text-center">
+        <div class="container">
+            <br><br>
+            <p>&copy; 2025 Sport Store. All rights reserved.</p>
+        </div>
+    </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const buyModal = document.getElementById('buyConfirmModal');
+        const productName = document.getElementById('modalProductName');
+        const confirmBtn = document.getElementById('confirmBuyBtn');
+
+        buyModal.addEventListener('show.bs.modal', function (event) {
+            const button = event.relatedTarget;
+            const title = button.getAttribute('data-title');
+            productName.textContent = title;
+
+            confirmBtn.onclick = function () {
+                alert('Bạn đã mua "' + title + '" thành công!');
+                const modal = bootstrap.Modal.getInstance(buyModal);
+                modal.hide();
+            };
+        });
+    </script>
 </body>
 
 </html>
